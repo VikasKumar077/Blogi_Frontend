@@ -1,0 +1,54 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #007bff;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navLinks {
+  display: flex;
+  gap: 15px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #007bff;
+  background: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+  background: #0056b3;
+  color: #fff;
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.welcomeText {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.authButtons {
+  display: flex;
+  gap: 15px;
+}
+
+.logout {
+  background: #dc3545;
+  color: white;
+}
+
+.logout:hover {
+  background: #c82333;
+}
