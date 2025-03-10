@@ -74,6 +74,7 @@ import { API_URL } from "../../../../utils/api";
     } catch (error) {
       console.error("Failed to update post:", error.response?.data || error);
       alert(error.response?.data?.detail || "Failed to update the post");
+      router.push("/")
     }
   };
 

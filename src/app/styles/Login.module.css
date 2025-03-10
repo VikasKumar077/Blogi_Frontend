@@ -52,7 +52,54 @@
     cursor: pointer;
     transition: background 0.3s;
 }
-
+.homeButton{
+       background-color: #0071f3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-left: 20px;
+}
 .loginButton:hover {
     background-color: #005bb5;
+}
+.homeButton:hover {
+    background-color: #005bb5;
+}
+
+/* 🟢 Loader styles */
+.loaderContainer {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ccc;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingText {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #007bff;
 }

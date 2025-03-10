@@ -1,25 +1,23 @@
-
-"use client"
+"use client";
 
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
-import styles from "../styles/Navbar.module.css"
+import styles from "../styles/Navbar.module.css";
 
 export default function Navbar() {
   const router = useRouter();
   const [username, setUsername] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
   useEffect(() => {
-      if (token) {
-        console.log("token:", token);
+    if (token) {
       try {
-          const decoded = jwtDecode(token);
-          console.log("usernameee",decoded.username)
-        setUsername(decoded.username); // Use 'sub' as username
+        const decoded = jwtDecode(token);
+        setUsername(decoded.username);
       } catch (error) {
         console.error("Invalid token:", error);
         setUsername("");
@@ -29,77 +27,63 @@ export default function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    
     setUsername("");
     router.push("/login");
   };
 
   return (
-    // <nav>
-    //   <button onClick={() => router.push("/")}>Home</button>
-    //   <button onClick={() => router.push("/public")}>Public Posts</button>
-
-    //   {token ? (
-    //     <>
-    //       <span>Welcome, {username || "User"}!</span>
-    //       <button onClick={() => router.push("/create-post")}>Create Post</button>
-    //       <button onClick={handleLogout}>Logout</button>
-    //     </>
-    //   ) : (
-    //     <>
-    //       <button onClick={() => router.push("/login")}>Login</button>
-    //       <button onClick={() => router.push("/register")}>Register</button>
-    //     </>
-    //   )}
-    // </nav>
-
     <nav className={styles.navbar}>
-      <div className={styles.navLinks}>
+      <div className={styles.logo} onClick={() => router.push("/")}>
+        Blogi
+      </div>
+
+      <button
+        className={styles.menuToggle}
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        ☰
+      </button>
+
+      <div className={`${styles.navLinks} ${menuOpen ? styles.active : ""}`}>
         <button className={styles.button} onClick={() => router.push("/")}>
           Home
         </button>
-        {/* <button
-          className={styles.button}
-          onClick={() => router.push("/public")}
-        >
-          Public Posts
-        </button> */}
-      </div>
 
-      {token ? (
-        <div className={styles.authButtons}>
-          <span className={styles.welcomeText}>
-            Welcome, {username || "User"}!
-          </span>
-          <button
-            className={styles.button}
-            onClick={() => router.push("/create-post")}
-          >
-            Create Post
-          </button>
-          <button
-            className={`${styles.button} ${styles.logout}`}
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
-        </div>
-      ) : (
-        <div className={styles.authButtons}>
-          <button
-            className={styles.button}
-            onClick={() => router.push("/login")}
-          >
-            Login
-          </button>
-          <button
-            className={styles.button}
-            onClick={() => router.push("/register")}
-          >
-            Register
-          </button>
-        </div>
-      )}
+        {token ? (
+          <>
+            <button
+              className={styles.button}
+              onClick={() => router.push("/create-post")}
+            >
+              Create Post
+            </button>
+            <span className={styles.welcomeText}>
+              Welcome, {username || "User"}
+            </span>
+            <button
+              className={`${styles.button} ${styles.logout}`}
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              className={styles.button}
+              onClick={() => router.push("/login")}
+            >
+              Login
+            </button>
+            <button
+              className={styles.button}
+              onClick={() => router.push("/register")}
+            >
+              Register
+            </button>
+          </>
+        )}
+      </div>
     </nav>
   );
 }

@@ -1,89 +1,160 @@
+/* Main container */
 .container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-.heading {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-}
-
+/* Post card styling */
 .postCard {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
+  background-color: #fff;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.author, .lastUpdate {
-    font-style: italic;
-    color: #555;
+/* Hover effect */
+.postCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
-.content {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #444;
+/* Post title */
+.postCard h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #333;
 }
 
-.loading {
-    font-size: 1.2rem;
-    color: #777;
+/* Post content */
+.postCard p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
 }
 
-/* Button Group */
+/* Metadata */
+.author,
+.lastUpdate {
+  font-size: 0.9rem;
+  color: #777;
+  font-style: italic;
+}
+
+/* Button group */
 .buttonGroup {
-    margin-top: 20px;
-    display: flex;
-    gap: 10px;
-    justify-content: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-/* Edit Button */
+/* Edit button */
 .editButton {
-    background-color: #ffc107;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s;
+  background-color: #ffc107;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
 }
 
 .editButton:hover {
-    background-color: #e0a800;
+  background-color: #e0a800;
 }
 
-/* Home Button */
-.homeButton {
-    background-color: #0070f3;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.homeButton:hover {
-    background-color: #005bb5;
-}
-
-/* Delete Button */
+/* Delete button */
 .deleteButton {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s;
+  background-color: #dc3545;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
 }
 
 .deleteButton:hover {
-    background-color: #c82333;
+  background-color: #c82333;
+}
+
+/* Back to home button */
+.homeButton {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.homeButton:hover {
+  background-color: #0056b3;
+}
+
+/* Loader */
+.loaderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #007bff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+.loadingText {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* Loader animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .postCard {
+    padding: 20px;
+  }
+
+  .postCard h1 {
+    font-size: 1.5rem;
+  }
+
+  .postCard p {
+    font-size: 1rem;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+  }
 }

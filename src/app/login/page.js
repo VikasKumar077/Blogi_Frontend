@@ -9,6 +9,7 @@ import { API_URL } from "../../../utils/api";
 
 export default function Login() {
   const [user, setUser] = useState({ username: "", password: "" });
+  const [loading,setLoading] = useState(false)
   const router = useRouter();
 
   const handleChange = (e) => {
@@ -16,6 +17,7 @@ export default function Login() {
   };
 
   const handleLogin = async () => {
+    setLoading(true);//show loader
     try {
       const response = await axios.post(`${API_URL}/auth/login`, user);
       const { token, username } = response.data;
@@ -29,29 +31,50 @@ export default function Login() {
       console.error("Login failed:", error);
       alert("Invalid credentials. Please try again.");
     }
+    finally {
+      setLoading(false)
+    }
   };
+  const handleBackToHome = () => {
+    router.push("/")
+  }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.loginCard}>
-        <h1 className={styles.heading}>Login</h1>
-        <input
-          className={styles.inputField}
-          name="username"
-          placeholder="Username"
-          onChange={handleChange}
-        />
-        <input
-          className={styles.inputField}
-          name="password"
-          type="password"
-          placeholder="Password"
-          onChange={handleChange}
-        />
-        <button className={styles.loginButton} onClick={handleLogin}>
-          🔑 Login
-        </button>
+    <>
+      <div className={styles.container}>
+        <div className={styles.loginCard}>
+          <h1 className={styles.heading}>Login</h1>
+          <input
+            className={styles.inputField}
+            name="username"
+            placeholder="Username"
+            onChange={handleChange}
+          />
+          <input
+            className={styles.inputField}
+            name="password"
+            type="password"
+            placeholder="Password"
+            onChange={handleChange}
+          />
+
+          {loading ? (
+            <div className={styles.loaderContainer}>
+              <div className={styles.loader}></div>
+              <p className={styles.loadingText}>AUTHORIZING...</p>
+            </div>
+          ) : (
+            <>
+              <button className={styles.loginButton} onClick={handleLogin}>
+                🔑 Login
+              </button>
+              <button className={styles.homeButton} onClick={handleBackToHome}>
+                🔑 Back To Home
+              </button>
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
