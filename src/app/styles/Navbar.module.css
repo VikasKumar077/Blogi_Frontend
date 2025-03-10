@@ -5,6 +5,7 @@
   padding: 1rem 2rem;
   background-color: #282a2b;
   color: #fff;
+  position: relative;
 }
 
 .logo {
@@ -17,6 +18,7 @@
   display: flex;
   gap: 1rem;
 }
+
 .button {
   background: #f28d00; /* Solid primary color */
   border: 1px solid #1b1b1b;
@@ -28,10 +30,7 @@
   transition: background 0.2s ease, border 0.2s ease, transform 0.1s ease;
   font-weight: 500;
 }
-.welcomeText{
-  color: rgb(255, 255, 255);
-  margin-top: 8px;
-}
+
 .button:hover {
   background: #303131; /* Darker shade on hover */
   border: 1px solid #4c4c4d;
@@ -51,6 +50,14 @@
   color: #fff;
 }
 
+.welcomeText {
+  color: rgb(255, 255, 255);
+  margin-top: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Hamburger menu icon */
 .menuToggle {
   display: none;
   background: none;
@@ -62,9 +69,8 @@
 }
 
 .menuToggle:hover {
-  color: #007bff; /* Highlight on hover */
+  color: #007bff;
 }
-
 
 /* ✅ Responsive styles */
 @media (max-width: 768px) {
@@ -94,5 +100,12 @@
     width: 100%;
     text-align: center;
     padding: 0.75rem 0;
+  }
+
+  /* Center the welcome text */
+  .welcomeText {
+    text-align: center;
+    margin: 10px 0;
+    order: -1; /* Push welcome text to the top */
   }
 }

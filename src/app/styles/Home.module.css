@@ -114,10 +114,16 @@
   .postsContainer {
     grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
   }
+  .container {
+  padding: 1px;
+}
 }
 
 @media (max-width: 600px) {
   .postsContainer {
     grid-template-columns: 1fr; /* 1 column for mobile */
   }
+    .container {
+  padding: 1px;
+}
 }

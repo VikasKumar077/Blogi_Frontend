@@ -34,7 +34,7 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo} onClick={() => router.push("/")}>
-        Blogi
+        BLOGI
       </div>
 
       <button
@@ -44,11 +44,16 @@ export default function Navbar() {
         ☰
       </button>
 
+      {token && (
+        <span className={styles.welcomeText}>
+          Welcome, {username || "User"}
+        </span>
+      )}
+
       <div className={`${styles.navLinks} ${menuOpen ? styles.active : ""}`}>
         <button className={styles.button} onClick={() => router.push("/")}>
           Home
         </button>
-
         {token ? (
           <>
             <button
@@ -57,9 +62,6 @@ export default function Navbar() {
             >
               Create Post
             </button>
-            <span className={styles.welcomeText}>
-              Welcome, {username || "User"}
-            </span>
             <button
               className={`${styles.button} ${styles.logout}`}
               onClick={handleLogout}
