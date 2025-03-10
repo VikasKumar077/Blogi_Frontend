@@ -67,7 +67,7 @@ export default function Home() {
     <>
       <Navbar />
       <div className={styles.container}>
-        <h1 className={styles.heading}>BLOGI | Be Always Updated</h1>
+        <h1 className={styles.heading}>BLOGI — Your Story | Your Space</h1>
 
         {/* 🟢 Show loader while loading */}
         {loading ? (
@@ -81,7 +81,9 @@ export default function Home() {
               posts.map((post) => (
                 <div key={post.id} className={styles.postCard}>
                   <h2>{post.title}</h2>
-                  <p className={styles.content}>{truncateText(post.content,150,post.id) }</p>
+                  <p className={styles.content}>
+                    {truncateText(post.content, 150, post.id)}
+                  </p>
                   {/* <p>{post.content}</p> */}
                   <p className={styles.author}>Author: {post.author}</p>
                   <div className={styles.buttonGroup}>

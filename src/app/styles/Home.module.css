@@ -126,4 +126,8 @@
     .container {
   padding: 1px;
 }
+.heading{
+    font-size: 20px;
+    margin-top: 10px;
+}
 }

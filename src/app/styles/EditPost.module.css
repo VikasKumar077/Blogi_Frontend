@@ -75,3 +75,11 @@
 .deleteButton:hover {
     background-color: #c82333;
 }
+
+
+@media (max-width:600px){
+    .updateButton, .deleteButton{
+        
+        font-size: 15px;
+    }
+}
