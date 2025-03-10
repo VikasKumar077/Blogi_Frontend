@@ -4,7 +4,7 @@
   import axios from "axios";
   import { useRouter } from "next/navigation";
   import styles from "../../styles/EditPost.module.css"; // Import CSS module
-
+import { API_URL } from "../../../../utils/api";
   export default function EditPost() {
     // const [title, setTitle] = useState("");
     // const [content, setContent] = useState("");
@@ -26,7 +26,7 @@
         if (pathId && token) {
           try {
             const response = await axios.get(
-              `http://127.0.0.1:8000/posts/${pathId}`,
+              `${API_URL}posts/${pathId}`,
               {
                 headers: {
                   Authorization: `Bearer ${token}`,
@@ -56,7 +56,7 @@
 
     try {
       await axios.put(
-        `http://127.0.0.1:8000/update-post/${pathId}`,
+        `${API_URL}/update-post/${pathId}`,
         {
           title: post.title,
           content: post.content,

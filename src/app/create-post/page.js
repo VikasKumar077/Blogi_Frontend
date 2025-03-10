@@ -4,7 +4,7 @@
   import { useRouter } from "next/navigation";
   import axios from "axios";
   import styles from "../styles/Create.module.css"
-
+import { API_URL } from "../../../utils/api";
   export default function CreatePost() {
     const [post, setPost] = useState({ title: "", content: "", author: "" });
     const [token, setToken] = useState(null);
@@ -14,8 +14,15 @@
     useEffect(() => {
       if (typeof window !== "undefined") {
         const storedToken = localStorage.getItem("token");
-        setToken(storedToken);
-        console.log("Loaded token from localStorage:", storedToken);
+        if (!storedToken) {
+           alert("Unauthorized! Please log in.");
+           router.push("/login");
+        }
+        else {
+          setToken(storedToken);
+          console.log("Loaded token from localStorage:", storedToken);
+        }
+        
       }
     }, []);
 
@@ -34,7 +41,7 @@
 
       try {
         const response = await axios.post(
-          "http://127.0.0.1:8000/create-post/",
+          `${API_URL}/create-post`,
           post,
           {
             headers: {

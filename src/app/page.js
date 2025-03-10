@@ -1,6 +1,6 @@
 "use client"
 
-
+import { API_URL } from "../../utils/api";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -10,7 +10,8 @@ import Navbar from "./components/Navbar";
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const router = useRouter();
-
+console.log("test")
+console.log(`api_url${API_URL}`)
   useEffect(() => {
    
     fetchPosts();
@@ -19,7 +20,7 @@ export default function Home() {
 
   const fetchPosts = async () => {
      console.log("debug")
-     const response = await axios.get("http://127.0.0.1:8000/public-posts/");
+     const response = await axios.get(`${API_URL}/public-posts/`);
      setPosts(response.data);
    };
   // Handle delete post
@@ -37,7 +38,7 @@ export default function Home() {
     <>
       <Navbar />
       <div className={styles.container}>
-        <h1 className={styles.heading}>All Blog Posts|</h1>
+        <h1 className={styles.heading}>BLOGI  | Be Always Updated </h1>
         {/* <button
           className={styles.createButton}
           onClick={() => router.push("/create-post")}

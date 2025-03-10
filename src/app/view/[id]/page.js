@@ -5,7 +5,7 @@ import axios from "axios";
 import styles from "../../styles/ViewPost.module.css"; // Import CSS module
 import { useRouter } from "next/navigation";
 import Navbar from "@/app/components/Navbar";
-
+import { API_URL } from "../../../../utils/api";
 export default function ViewPost() {
   const [post, setPost] = useState({});
   const [id, setId] = useState(null);
@@ -19,7 +19,7 @@ export default function ViewPost() {
       const fetchPost = async () => {
         try {
           const response = await axios.get(
-            `http://127.0.0.1:8000/posts/${pathId}`
+            `${API_URL}/posts/${pathId}`
           );
           setPost(response.data);
         } catch (error) {
@@ -41,7 +41,7 @@ export default function ViewPost() {
     }
 
     try {
-      await axios.delete(`http://127.0.0.1:8000/delete-post/${pathId3}`, {
+      await axios.delete(`${API_URL}/delete-post/${pathId3}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Send token in headers
         },

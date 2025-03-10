@@ -3,6 +3,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import styles from "../styles/Register.module.css"
+import { API_URL } from "../../../utils/api";
+
 
 export default function Register() {
     
@@ -26,8 +29,7 @@ export default function Register() {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/auth/register/",
+      const response = await axios.post(`${API_URL}/auth/register/`,
         user,
         {
           headers: {
@@ -49,23 +51,56 @@ export default function Register() {
   };
 
   return (
-    <div>
-      <h1>Register</h1>
-      <input name="name" placeholder="Full Name" onChange={handleChange} />
-      <input name="username" placeholder="Username" onChange={handleChange} />
+    // <div>
+    //   <h1>Register</h1>
+    //   <input name="name" placeholder="Full Name" onChange={handleChange} />
+    //   <input name="username" placeholder="Username" onChange={handleChange} />
+    //   <input
+    //     type="password"
+    //     name="password"
+    //     placeholder="Password"
+    //     onChange={handleChange}
+    //   />
+    //   <input
+    //     type="password"
+    //     name="confirmPassword"
+    //     placeholder="Confirm Password"
+    //     onChange={handleChange}
+    //   />
+    //   <button onClick={handleRegister}>Register</button>
+    // </div>
+
+       <div className={styles.container}>
+      <h1 className={styles.heading}>Register</h1>
+      <input
+        name="name"
+        placeholder="Full Name"
+        onChange={handleChange}
+        className={styles.input}
+      />
+      <input
+        name="username"
+        placeholder="Username"
+        onChange={handleChange}
+        className={styles.input}
+      />
       <input
         type="password"
         name="password"
         placeholder="Password"
         onChange={handleChange}
+        className={styles.input}
       />
       <input
         type="password"
         name="confirmPassword"
         placeholder="Confirm Password"
         onChange={handleChange}
+        className={styles.input}
       />
-      <button onClick={handleRegister}>Register</button>
+      <button className={styles.button} onClick={handleRegister}>
+        Register
+      </button>
     </div>
   );
 }

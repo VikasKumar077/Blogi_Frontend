@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import styles from "../styles/Login.module.css"
+import { API_URL } from "../../../utils/api";
 
 export default function Login() {
   const [user, setUser] = useState({ username: "", password: "" });
@@ -16,7 +17,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://127.0.0.1:8000/auth/login/", user);
+      const response = await axios.post(`${API_URL}/auth/login`, user);
       const { token, username } = response.data;
 
       localStorage.setItem("token", token);
