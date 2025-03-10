@@ -55,6 +55,8 @@
   margin-top: 8px;
   font-size: 1.2rem;
   font-weight: bold;
+   border-bottom: 2px solid rgb(255, 166, 0);
+    padding: 4px;
 }
 
 /* Hamburger menu icon */
@@ -107,5 +109,12 @@
     text-align: center;
     margin: 10px 0;
     order: -1; /* Push welcome text to the top */
+    font-size: 15px;
+    border-bottom: 1px solid rgb(255, 166, 0);
+    padding: 4px;
+  }
+
+  .logo{
+    font-size: 20px;
   }
 }
