@@ -26,7 +26,7 @@ import { API_URL } from "../../../../utils/api";
         if (pathId && token) {
           try {
             const response = await axios.get(
-              `${API_URL}posts/${pathId}`,
+              `${API_URL}/posts/${pathId}`,
               {
                 headers: {
                   Authorization: `Bearer ${token}`,
