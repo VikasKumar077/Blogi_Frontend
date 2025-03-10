@@ -103,3 +103,17 @@
   font-weight: bold;
   color: #007bff;
 }
+
+@media (max-width: 900px) {
+.homeButton{
+    
+    margin-top: 10px;
+}
+}
+
+@media (max-width: 600px) {
+.homeButton{
+    
+    margin-top: 10px;
+}
+}
