@@ -80,9 +80,10 @@
     top: 70px;
     left: 0;
     right: 0;
-    background-color: #007bff;
+    background-color: #242525;
     padding: 1rem;
     z-index: 10;
+    border-top: 2px solid rgb(235, 234, 234);
   }
 
   .navLinks.active {
